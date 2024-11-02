@@ -11,6 +11,9 @@ import LoginPage from "./components/LoginPage";
 import StudentProgress from "./components/StudentProgress";
 import TechnicalReport from "./components/TechnicalReport";
 import NonTechnicalReport from "./components/NonTechnicalReport";
+import AdminDashboard from "./components/AdminDashboard";
+import AdminTechnicalReport from "./components/AdminTechnicalReport";
+import AdminNonTechnicalReport from "./components/AdminNonTechnicalReport";
 
 const AppLayout = () => {
     return (
@@ -53,6 +56,18 @@ const appRouter = createBrowserRouter([
             {
                 path: "non-technical-report",
                 element: <NonTechnicalReport />
+            },
+            {
+                path: "admin-dashboard",
+                element: <AdminDashboard />
+            },
+            {
+                path: "admin-technical-report",
+                element: <AdminTechnicalReport />
+            },
+            {
+                path: "admin-non-technical-report",
+                element: <AdminNonTechnicalReport />
             },
             {
                 path: "support",

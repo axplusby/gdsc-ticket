@@ -10,7 +10,9 @@ const LoginPage = () => {
         e.preventDefault();
         // Simple authentication logic
         if (username === 'admin' && password === 'password') {
-            navigate('/dashboard'); // Redirect to dashboard on successful login
+            navigate('/admin-dashboard'); // Redirect to dashboard on successful login
+        } else if (username === "client" && password === "client") {
+            navigate("/dashboard")
         } else {
             alert('Invalid credentials');
         }

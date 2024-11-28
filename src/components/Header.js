@@ -1,54 +1,52 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from "../assets/gdscLogo.png";
 
-const Header = () => {
-    const location = useLocation();
 
-    // Determine if the current route is in the admin section
-    const isAdmin = location.pathname.startsWith("/admin");
+const Header = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLoginLogout = () => {
+        if (isLoggedIn) {
+            // Log out
+            setIsLoggedIn(false);
+            navigate('/'); // Redirect to the login page on logout
+        } else {
+            // Redirect to login page
+            navigate('/');
+        }
+    };
 
     return (
-        <div className="bg-blue-600 flex justify-evenly text-white">
-            <div className="flex justify-center items-center space-x-6">
-                <img className="h-8 logo" src={logo} alt="Logo" />
-                <h1 className="text-xl">
-                    {isAdmin ? "Admin Dashboard - GDSC MAKAUT" : "Google Developer on Campus - MAKAUT"}
-                </h1>
+        <header className="bg-blue-600 text-white fixed top-0 left-0 right-0 z-50 shadow-md">
+            <div className="container mx-auto flex justify-between  py-4 px-6">
+                <div className="flex justify-center items-center space-x-6">
+                    <img className="h-8 logo" src={logo} alt="Logo" />
+                    <h1 className="text-xl">Google Developer on Campus - MAKAUT</h1>
+                </div>
+                <nav className="flex space-x-6">
+                    <button
+                        className="hover:bg-sky-500 py-2 px-4 rounded-lg"
+                        onClick={() => navigate('/support')}
+                    >
+                        Support
+                    </button>
+                    <button
+                        className="hover:bg-sky-500 py-2 px-4 rounded-lg"
+                        onClick={() => navigate('/contact')}
+                    >
+                        Contact
+                    </button>
+                    <button
+                        className="hover:bg-sky-500 py-2 px-4 rounded-lg"
+                        onClick={handleLoginLogout}
+                    >
+                        {isLoggedIn ? 'Logout' : 'Login'}
+                    </button>
+                </nav>
             </div>
-            <div className="py-4 flex justify-end">
-                <ul className="flex space-x-6">
-                    {isAdmin ? (
-                        <>
-                            <li className="hover:bg-sky-500 py-2 px-4 rounded-lg">
-                                <Link to="/admin-dashboard">Dashboard</Link>
-                            </li>
-                            <li className="hover:bg-sky-500 py-2 px-4 rounded-lg">
-                                <Link to="/admin-technical-report">Technical Report</Link>
-                            </li>
-                            <li className="hover:bg-sky-500 py-2 px-4 rounded-lg">
-                                <Link to="/admin-non-technical-report">Non-Technical Report</Link>
-                            </li>
-                        </>
-                    ) : (
-                        <>
-                            <li className="hover:bg-sky-500 py-2 px-4 rounded-lg">
-                                <Link to="/dashboard">Dashboard</Link>
-                            </li>
-                            <li className="hover:bg-sky-500 py-2 px-4 rounded-lg">
-                                <Link to="/support">Support</Link>
-                            </li>
-                            <li className="hover:bg-sky-500 py-2 px-4 rounded-lg">
-                                <Link to="/contact">Contact</Link>
-                            </li>
-                        </>
-                    )}
-                    <li className="hover:bg-sky-500 py-2 px-4 rounded-lg">
-                        <Link to="/">Log In</Link>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </header>
     );
 };
 

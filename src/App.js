@@ -17,11 +17,14 @@ import AdminNonTechnicalReport from "./components/AdminNonTechnicalReport";
 
 const AppLayout = () => {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col h-screen overflow-hidden">
             <header>
                 <Header />
             </header>
-            <main className="flex-grow">
+            <br></br>
+            <br></br>
+            <br></br>
+            <main className="flex-grow overflow-auto">
                 <Outlet /> {/* Render child route here */}
             </main>
             <footer>

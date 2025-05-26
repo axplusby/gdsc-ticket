@@ -91,7 +91,7 @@ const AdminTechnicalReport = () => {
     ];
 
     return (
-        <div className="p-6 bg-gray-100 min-h-screen">
+        <div className="m-18 p-6 bg-gray-100 min-h-screen">
             <h2 className="text-2xl font-bold mb-4">Technical Report</h2>
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white border border-gray-300" style={{ width: "1200px" }}>
